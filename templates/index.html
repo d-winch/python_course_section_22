@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Geo App</title>
+  <head>
+    <link href="../static/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Geo App</h1>
+      <h3>Please upload a csv file with an 'Address' column.</h3>
+      <div class="message">
+        {{err | safe}}
+      </div>
+      <form class="" action="{{url_for('data')}}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="form_file" required>
+        <button type="submit" name="submit_button">Submit</button>
+      </form>
+      {%- if data is defined %}
+        {{ data | safe }}
+      {% endif %}
+      {% include btn ignore missing %}
+    </div>
+  </body>
+
+</html>
